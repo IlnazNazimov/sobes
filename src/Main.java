@@ -7,8 +7,27 @@ import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
-
+        System.out.println(search("pwwkew"));
     }
+    private static int search(String s) {
+        if (s == null) return 0;
+        Map<Character, Integer> charSet= new HashMap<>();
+        char[] chars = s.toCharArray();
+        int max = 0;
+        int start = 0;
+
+        for(int i = 0; i < s.length(); i++) {
+            if (charSet.containsKey(chars[i])) {
+                start = charSet.get(chars[i]);
+                max = Math.max(i - start, max);
+            }
+            charSet.put(chars[i], i);
+        }
+
+        max = Math.max(charSet.size() - start, max);
+        return max;
+    }
+
 
 
 

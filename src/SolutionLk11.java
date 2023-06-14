@@ -5,8 +5,8 @@ class SolutionLk11 {
     public int singleNumber(int[] nums) {
         HashMap<Integer, Integer> result = new HashMap<>();
 
-        for(int i = 0; i < nums.length; i++) {
-            result.merge(nums[i], 1, Integer::sum);
+        for (int num : nums) {
+            result.merge(num, 1, Integer::sum);
         }
         for(Map.Entry<Integer,Integer> entry : result.entrySet()) {
             if(entry.getValue() == 1) return entry.getKey();
@@ -16,8 +16,8 @@ class SolutionLk11 {
     //Или
     public int singleNumber2(int[] nums) {
         int result=0;
-        for(int i=0; i<nums.length; i++) {
-            result = result^nums[i];
+        for (int num : nums) {
+            result = result ^ num;
         }
         return result;
     }
